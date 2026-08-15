@@ -41,3 +41,13 @@ let product1:Product=["laptop",1000,true];
 let product2:Product=["Phone",500,false];
 
 console.log(product1,product2)
+
+
+
+// Array
+// [string, string, string, ...]
+// → same type, flexible length
+
+// Tuple
+// [string, number, boolean]
+// → fixed positions, specific types
