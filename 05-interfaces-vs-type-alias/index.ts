@@ -37,3 +37,11 @@ const dog:Animal={
 }
 
 console.log(dog)
+
+
+
+// 	                      type	    interface
+// Object shapes         	✅	        ✅
+// Unions (string | number)	✅	        ❌ can't do this
+// Declaration merging	    ❌       	✅
+// Extending another shape	& (intersection)	extends keyword
