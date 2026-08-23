@@ -1,15 +1,31 @@
 "use strict";
+// type User={
+//     id:number;
+//     name:string;
+//     email:string;
+// }
 Object.defineProperty(exports, "__esModule", { value: true });
-const user1 = {
-    id: 1,
-    name: "Alex",
-    email: "alex@gmail.com"
+async function fetchData() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
+        if (!response.ok) {
+            throw new Error("Failed to fetch user");
+        }
+        const data = await response.json();
+        return data;
+    }
+    catch (err) {
+        if (err instanceof Error) {
+            console.error(err.message);
+        }
+        return null;
+    }
+}
+const main = async () => {
+    const user = await fetchData();
+    if (user) {
+        console.log(user.name);
+    }
 };
-const user2 = {
-    id: 2,
-    name: "Ani",
-    email: "ani@gmail.com"
-};
-console.log(user1.name);
-console.log(user2.name);
+main();
 //# sourceMappingURL=index.js.map
