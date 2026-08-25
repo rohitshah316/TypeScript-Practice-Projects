@@ -3,37 +3,46 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 // //we can create error using
 // // throw new Error("Something went wrong");
-// function divide(a:number,b:number):number{
-//     if(b===0){
-//         throw new Error("cannot divide by zero");
-//     }
-//     return a/b;
-// }
-// try{
-// console.log(divide(2,3));
-// console.log(divide(2,0));
-// }catch(err:unknown){
-//     if(err instanceof Error){
-//         console.error(err.message)
-//     }else{
-//         console.log("Not an error:",err)
-//     }
-// }
-function test() {
-    throw "Something went wrong!";
+class DivisionByZeroError extends Error {
+    constructor() {
+        super("Cannot divide by zero");
+        this.name = "DivisionByZeroError";
+    }
+}
+function divide(a, b) {
+    if (b === 0) {
+        throw new DivisionByZeroError();
+    }
+    return a / b;
 }
 try {
-    test();
+    console.log(divide(2, 3));
+    console.log(divide(2, 0));
 }
 catch (err) {
-    handleError(err);
-}
-function handleError(err) {
-    if (err instanceof Error) {
+    if (err instanceof DivisionByZeroError) {
         console.error(err.message);
     }
+    else if (err instanceof Error) {
+        console.error("General error:", err.message);
+    }
     else {
-        console.error("Unknown error:", err);
+        console.log("Unkonwn error:", err);
     }
 }
+// function handleError(err:unknown):void{
+//     if(err instanceof Error){
+//         console.error(err.message);
+//     }else{
+//         console.error("Unknown error:",err);
+//     }
+// }
+// function test(){
+//     throw "Something went wrong!"
+// }
+// try{
+//     test();
+// }catch(err:unknown){
+//     handleError(err);
+// }
 //# sourceMappingURL=index.js.map
