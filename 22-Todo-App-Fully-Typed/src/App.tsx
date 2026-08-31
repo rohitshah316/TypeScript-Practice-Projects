@@ -50,18 +50,22 @@ const App = () => {
   }
 
 
-  const updateTodo=(id:number,newTitle:string)=>{
+  const updateTodo=(id:number,newTitle:string):boolean=>{
+
+    if(!newTitle.trim()) return false;
     setTodos((prevTodos)=>
       prevTodos.map((todo)=>{
         if(todo.id===id){
           return {
             ...todo, 
-            title: newTitle
+            title: newTitle.trim()
           }
         }
         return todo;
       })
     )
+
+    return true;
   }
   return (
     <>
